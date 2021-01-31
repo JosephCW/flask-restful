@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -14,6 +14,15 @@ def incrementer(number):
 @app.route('/<string:name>/')
 def hello(name):
     return f'Hello, {name}!'
+
+@app.route('/person/')
+def person():
+    # jsonify wraps json.dumps() and makes it a response object
+    #  that is application/json type
+    return jsonify({
+        'name': 'Joey',
+        'age': '23'
+    })
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8445)
