@@ -24,11 +24,19 @@ def person():
         'age': '23'
     })
 
+# by omitting the trailing '/', you get 404 if / is provided
+#  but accessing '/person' would redirect to /person/
 @app.route('/numbers')
 def numbers():
     return jsonify([
         1, 2, 3, 5, 9, 25
     ])
+
+@app.route('/teapot/')
+def teapot():
+    # Tuple stating the return code.
+    return 'Would you like some tea?', 418
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8445)
