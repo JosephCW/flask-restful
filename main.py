@@ -24,5 +24,11 @@ def person():
         'age': '23'
     })
 
+@app.route('/numbers')
+def numbers():
+    return jsonify([
+        1, 2, 3, 5, 9, 25
+    ])
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8445)
