@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
@@ -37,6 +37,13 @@ def teapot():
     # Tuple stating the return code.
     return 'Would you like some tea?', 418
 
+@app.before_request
+def before():
+    print('This will happen before every request.')
+
+@app.after_request
+def after():
+    print('This will happen after every request.')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8445)
